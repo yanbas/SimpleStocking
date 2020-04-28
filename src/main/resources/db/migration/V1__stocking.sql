@@ -21,7 +21,8 @@ CREATE TABLE stocking.movement (
                                    status ENUM('in','out') NOT NULL,
                                    qty INT NOT NULL,
                                    pic varchar(100) NULL,
-                                   CONSTRAINT movement_PK PRIMARY KEY (id)
+                                   CONSTRAINT movement_PK PRIMARY KEY (id),
+                                   FOREIGN KEY (material_id) REFERENCES stocking.materials(id) ON DELETE RESTRICT ON UPDATE RESTRICT
 )
     ENGINE=InnoDB
     DEFAULT CHARSET=utf8
@@ -38,7 +39,8 @@ CREATE TABLE stocking.adjustment (
                                      pic varchar(100) NULL,
                                      created_date DATETIME NULL,
                                      CONSTRAINT adjustment_PK PRIMARY KEY (id),
-                                     CONSTRAINT adjustment_FK FOREIGN KEY (material_id) REFERENCES stocking.materials(id) ON DELETE RESTRICT ON UPDATE RESTRICT
+                                     CONSTRAINT adjustment_FK FOREIGN KEY (material_id) REFERENCES stocking.materials(id) ON DELETE RESTRICT ON UPDATE RESTRICT,
+                                     FOREIGN KEY (movement_id) REFERENCES stocking.movement(id) ON DELETE RESTRICT ON UPDATE RESTRICT
 )
     ENGINE=InnoDB
     DEFAULT CHARSET=utf8
