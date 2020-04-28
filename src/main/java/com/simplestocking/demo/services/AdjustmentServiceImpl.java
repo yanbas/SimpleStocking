@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -20,13 +18,15 @@ public class AdjustmentServiceImpl implements AdjustmentService {
     AdjustmentRepository adjustmentRepository;
 
     @Override
-    public List<Adjustment> findAll() {
-        return adjustmentRepository.findAll();
+    public List<Map<Object, Object>> findAll() {
+        return adjustmentRepository.getAdjustments();
+//        return adjustmentRepository.findAll();
     }
 
     @Override
-    public Optional<Adjustment> findById(String id) {
-        return adjustmentRepository.findById(id);
+    public List<Map<Object, Object>> findById(String id) {
+        return adjustmentRepository.getAdjustment(id);
+//        return adjustmentRepository.findById(id);
     }
 
     @Override

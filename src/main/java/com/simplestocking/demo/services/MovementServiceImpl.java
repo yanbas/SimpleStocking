@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -17,13 +17,14 @@ public class MovementServiceImpl implements MovementService {
     MovementRepository movementRepository;
 
     @Override
-    public List<Movement> findAll() {
-        return movementRepository.findAll();
+    public List<Map<Object, Object>> findAll() {
+        return movementRepository.getMovements();
+//        return movementRepository.findAll();
     }
 
-    @Override
-    public Optional<Movement> findById(String id) {
-        return movementRepository.findById(id);
+    public List<Map<Object, Object>> findById(String id) {
+//        return movementRepository.findById(id);
+        return movementRepository.getMovement(id);
     }
 
     @Override
