@@ -27,9 +27,6 @@ public class Users {
     @Column(name = "level")
     private String level;
 
-    @Column(name = "position")
-    private String position;
-
     @Column(name = "created_date")
     private Date created_date;
 
