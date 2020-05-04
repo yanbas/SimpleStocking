@@ -34,7 +34,8 @@ public class Users {
     @JsonProperty("last_login")
     private Date lastLogin;
 
-
+    @Column(name = "password")
+    private String password;
 
 
 }
